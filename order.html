@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Phoenix Plants Lifesaver Pvt. Ltd. Order Form - Place your fertilizer orders online. Generate PDF order form for bulk fertilizer purchases.">
+    <title>Order Form | Phoenix Plants Lifesaver Pvt. Ltd. - Fertilizer Order Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #0A5C2E;
+            --primary-dark: #064520;
+            --secondary-gold: #E8A735;
+            --light-green: #E8F3EC;
+            --gray-bg: #F9FAFB;
+            --text-dark: #1F2A1E;
+            --text-gray: #5A6B5A;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 28px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
+            --border-color: #E5E9F0;
+            --error-red: #E53E3E;
+            --success-green: #10B981;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--gray-bg) 0%, #F3F4F6 100%);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .logo, .btn {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Custom Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover h1 {
+            transform: scale(1.05);
+        }
+        
+        .logo p {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+        }
+        
+        .logo a {
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-green), var(--secondary-gold));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-green);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu:hover {
+            transform: scale(1.1);
+        }
+
+        /* Order Form Section */
+        .order-section {
+            padding: 60px 0;
+        }
+        
+        .order-header {
+            text-align: center;
+            margin-bottom: 48px;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .order-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+        }
+        
+        .order-header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        /* Form Layout */
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        
+        .form-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            animation: slideInLeft 0.6s ease;
+        }
+        
+        .form-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-card:nth-child(2) {
+            animation: slideInRight 0.6s ease;
+        }
+        
+        .form-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+        }
+        
+        .form-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-green), var(--secondary-gold));
+            border-radius: 3px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .required:after {
+            content: " *";
+            color: var(--error-red);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(10, 92, 46, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Product Items */
+        .product-item {
+            display: grid;
+            grid-template-columns: 2fr 0.8fr 0.8fr 0.8fr 0.8fr 0.3fr;
+            gap: 12px;
+            margin-bottom: 12px;
+            align-items: center;
+            animation: fadeInUp 0.3s ease;
+            padding: 8px;
+            background: var(--gray-bg);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .product-item:hover {
+            background: var(--light-green);
+            transform: translateX(5px);
+        }
+        
+        .remove-product {
+            background: #FEE2E2;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--error-red);
+            transition: all 0.3s ease;
+        }
+        
+        .remove-product:hover {
+            background: var(--error-red);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .add-product-btn {
+            background: var(--light-green);
+            border: 2px dashed var(--primary-green);
+            padding: 12px;
+            width: 100%;
+            border-radius: 12px;
+            cursor: pointer;
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-top: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .add-product-btn:hover {
+            background: var(--primary-green);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .total-amount {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 2px solid var(--border-color);
+            text-align: right;
+        }
+        
+        .total-amount h3 {
+            margin-bottom: 12px;
+            color: var(--primary-green);
+        }
+        
+        .total-amount span {
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Buttons */
+        .submit-area {
+            margin-top: 32px;
+            text-align: center;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
+            color: white;
+            padding: 14px 40px;
+            border-radius: 48px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary-gold), #d4941a);
+            color: var(--text-dark);
+        }
+        
+        .btn-danger {
+            background: #DC2626;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInUp 0.3s ease;
+        }
+        
+        .modal-content {
+            background: var(--white);
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 24px;
+            padding: 24px;
+            animation: slideInLeft 0.4s ease;
+        }
+        
+        .close-modal {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: var(--gray-bg);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+            background: var(--error-red);
+            color: white;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        /* PDF Preview Area */
+        #pdfPreviewArea {
+            background: white;
+            border-radius: 12px;
+            overflow: auto;
+            max-height: 500px;
+        }
+        
+        /* PDF Content Styles */
+        .pdf-order-container {
+            font-family: 'Inter', sans-serif;
+            background: white;
+            padding: 40px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .pdf-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0A5C2E;
+        }
+        
+        .pdf-header h1 {
+            color: #0A5C2E;
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .pdf-order-id {
+            background: #E8F3EC;
+            padding: 8px 16px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .pdf-section {
+            margin-bottom: 24px;
+        }
+        
+        .pdf-section h3 {
+            color: #0A5C2E;
+            margin-bottom: 12px;
+            border-left: 3px solid #E8A735;
+            padding-left: 12px;
+        }
+        
+        .pdf-info-box {
+            background: #F9FAFB;
+            padding: 16px;
+            border-radius: 12px;
+        }
+        
+        .pdf-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+        
+        .pdf-table th, .pdf-table td {
+            border: 1px solid #E5E9F0;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .pdf-table th {
+            background: #E8F3EC;
+        }
+        
+        .pdf-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #E5E9F0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5A6B5A;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0A2A1A 0%, #064520 100%);
+            color: #D4E6DA;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+        
+        footer h4 {
+            color: var(--secondary-gold);
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+        }
+        
+        footer .footer-section {
+            transition: all 0.3s ease;
+        }
+        
+        footer .footer-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        hr {
+            border-color: #2C5238;
+            margin: 30px 0 20px;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-green);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 48px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1500;
+            animation: slideInRight 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .toast.error {
+            background: var(--error-red);
+        }
+        
+        .toast.success {
+            background: var(--success-green);
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            .container {
+                padding: 0 20px;
+            }
+            .product-item {
+                grid-template-columns: 1fr 0.8fr 0.8fr 0.3fr;
+                gap: 8px;
+            }
+            .submit-area {
+                flex-direction: column;
+            }
+            .btn-primary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="#">
+                    <h1><i class="fas fa-seedling"></i>Phoenix Plants Lifesaver Pvt. Ltd.</h1>
+                    <p>शुद्धता एवं समृद्धि का प्रतीक...!</p>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Dealers</a></li>
+                <li><a href="#" class="active">Order Form</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="order-section">
+        <div class="container">
+            <div class="order-header" data-aos="fade-up">
+                <h1><i class="fas fa-file-invoice"></i> Phoenix Plants Lifesaver Pvt. Ltd.</h1>
+                <p>शुद्धता एवं समृद्धि का प्रतीक - किसानों की उन्नति, मिट्टी की समृद्धि।</p>
+            </div>
+            <div class="form-container">
+                <!-- Customer Information -->
+                <div class="form-card" data-aos="fade-right">
+                    <h2><i class="fas fa-user-circle"></i> Customer Information</h2>
+                    <div class="form-group">
+                        <label class="required">Full Name / Business Name</label>
+                        <input type="text" id="customerName" placeholder="Enter full name or business name">
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Mobile Number</label>
+                        <input type="tel" id="mobile" placeholder="10-digit mobile number">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="email" placeholder="Email for order confirmation">
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Delivery Address</label>
+                        <textarea id="address" rows="3" placeholder="Complete address with city, district, pincode"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Order Date</label>
+                        <input type="date" id="orderDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Expected Delivery Date</label>
+                        <input type="date" id="deliveryDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Customer Type</label>
+                        <select id="customerType">
+                            <option value="Farmer">👨‍🌾 Farmer / किसान</option>
+                            <option value="Dealer">🏪 Dealer / डीलर</option>
+                            <option value="Distributor">📦 Distributor / वितरक</option>
+                            <option value="Phoenix Business">🌾 Phoenix Business</option>
+                            <option value="Institution">🏛️ Institution / Government</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>GST Number (if applicable)</label>
+                        <input type="text" id="gst" placeholder="GSTIN">
+                    </div>
+                </div>
+
+                <!-- Order Items -->
+                <div class="form-card" data-aos="fade-left">
+                    <h2><i class="fas fa-shopping-cart"></i> Order Items</h2>
+                    <div id="productItems">
+                        <div class="product-item">
+                            <select class="product-name">
+                                <option value="">Select Product</option>
+                                <option value="Vermicompost - Organic Fertilizer">1. N.P.K. 18:28:10 (Rock Phosphate)</option>
+                                <option value="Neem Cake - Organic Fertilizer">2. Complete-Dose</option>
+                                <option value="NPK 19:19:19 - Water Soluble">3. Phino-Potash</option>
+                                <option value="NPK 13:40:13 - Water Soluble">4. Mono-Potash</option>
+                                <option value="NPK 00:52:34 - Water Soluble">5. Phino-16</option>
+                                <option value="Zinc EDTA 12% - Micronutrient">6. Mono-SSP</option>
+                                <option value="Iron EDTA 12% - Micronutrient">7. Mono-SSP+</option>
+                                <option value="Boron 20% - Micronutrient">8. Phino-Bor</option>
+                                <option value="Gypsum - Soil Conditioner">9. Phino Cal</option>
+                                <option value="Bentonite Clay - Soil Conditioner">10. Phino-Gold</option>
+                            </select>
+                            <input type="number" class="quantity" placeholder="Qty" value="1" min="1" step="1">
+                            <select class="unit">
+                                <option value="Kg">Kg</option>
+                                <option value="Ton">Ton</option>
+                                <option value="Bag">Bag (50kg)</option>
+                                <option value="Liter">Liter</option>
+                            </select>
+                            <input type="number" class="rate" placeholder="Rate" value="0" min="0" step="0.01">
+                            <input type="text" class="line-total" placeholder="Total" value="0.00" readonly>
+                            <button type="button" class="remove-product" onclick="removeProductItem(this)"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                    <button type="button" class="add-product-btn" onclick="addProductItem()">
+                        <i class="fas fa-plus-circle"></i> Add Another Product
+                    </button>
+                    
+                    <div class="total-amount">
+                        <h3><i class="fas fa-chart-line"></i> Order Summary</h3>
+                        <p>📦 Total Items: <span id="totalItems">0</span></p>
+                        <p>💰 Grand Total: ₹ <span id="grandTotal">0.00</span></p>
+                        <p style="font-size: 0.85rem; color: var(--text-gray); margin-top: 8px;">
+                            <i class="fas fa-info-circle"></i> Note: Final pricing will be confirmed by our sales team
+                        </p>
+                    </div>
+
+                    <div class="terms-section" style="margin-top: 24px; padding: 20px; background: #f4fff2; border: 1px solid #d5f0dc; border-radius: 14px;">
+                        <h3 style="margin-bottom: 12px; color: #064520;">📝 Terms & Conditions</h3>
+                        <ol style="padding-left: 20px; color: #2e4c33; font-size: 0.95rem;">
+                            <li>Give information about leakage and damage material within 7 days of receiving material; after that buyer will be responsible for situation of goods.</li>
+                            <li>No sale return is accepted without prior permission of management.</li>
+                            <li>Freight should be paid on delivery of goods.</li>
+                            <li>Prices mentioned on order form are calculated according to cash discount table of price list.</li>
+                            <li>Payment terms are subject to designation of buyer and prices coated by company official.</li>
+                        </ol>
+                        <div style="margin-top: 12px;">
+                            <label style="font-weight: 600; color: #064520;">Payment Terms</label>
+                            <input type="text" id="paymentTerms" placeholder="e.g., 30 days credit, cash on delivery" style="width: 100%; padding: 10px; margin-top: 6px; border: 1px solid #bde6b6; border-radius: 8px;">
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 16px; font-size: 0.95rem; color: #1f331f;">
+                            <span>Business Owner Sign & Stamp: _________________________</span>
+                            <span>RDM/ZM sign: _________________________</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="submit-area" data-aos="fade-up">
+                <button type="button" class="btn-primary" id="generateBtn" onclick="generatePDF()">
+                    <i class="fas fa-file-pdf"></i> Generate & Download PDF
+                </button>
+                <button type="button" class="btn-primary btn-secondary" onclick="resetForm()">
+                    <i class="fas fa-redo-alt"></i> Reset Form
+                </button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+            <div class="footer-section">
+                <h4><i class="fas fa- phoenix"></i> Phoenix Plants Lifesaver Pvt. Ltd.</h4>
+                <p>Trusted fertilizer partner for sustainable farming since 2010</p>
+                <p style="margin-top: 10px;">शुद्धता एवं समृद्धि का प्रतीक ...!</p>
+            </div>
+            <div class="footer-section">
+                <h4><i class="fas fa-phone-alt"></i> Contact</h4>
+                <p>📞 <strong>Toll Free No. 1800 569 3914</strong></p>
+                <p>✉️ Support@phoenixplantslifesaverpvtltd.com</p>
+                <p>💬 WhatsApp: +91-8126354387</p>
+            </div>
+            <div class="footer-section">
+                <h4><i class="fas fa-map-marker-alt"></i> Office</h4>
+                <p>REGD. Office : S.No. COD, 3rd Floor</p>
+                <p>Dharampali Palace Bhoja Market</p>
+                <p>Atta-Sector-27, Noida-201301 (U.P.) INDIA</p>
+            </div>
+        </div>
+        <hr>
+        <p style="text-align: center;">© Phoenix Plants Lifesaver Pvt. Ltd. शुद्धता एवं समृद्धि का प्रतीक ...! | <i class="fas fa-heart" style="color: var(--secondary-gold);"></i></p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+    });
+
+    let currentOrderData = null;
+
+    function showToast(message, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${message}`;
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.remove();
+        }, 3000);
+    }
+
+    function addProductItem() {
+        const container = document.getElementById('productItems');
+        const newItem = document.createElement('div');
+        newItem.className = 'product-item';
+        newItem.style.animation = 'fadeInUp 0.3s ease';
+        newItem.innerHTML = `
+            <select class="product-name">
+                <option value="">Select Product</option>
+                <option value="Vermicompost - Organic Fertilizer">🐛 Vermicompost - Organic Fertilizer</option>
+                <option value="Neem Cake - Organic Fertilizer">🌿 Neem Cake - Organic Fertilizer</option>
+                <option value="NPK 19:19:19 - Water Soluble">💧 NPK 19:19:19 - Water Soluble</option>
+                <option value="NPK 13:40:13 - Water Soluble">💧 NPK 13:40:13 - Water Soluble</option>
+                <option value="NPK 00:52:34 - Water Soluble">💧 NPK 00:52:34 - Water Soluble</option>
+                <option value="Zinc EDTA 12% - Micronutrient">⚡ Zinc EDTA 12% - Micronutrient</option>
+                <option value="Iron EDTA 12% - Micronutrient">⚡ Iron EDTA 12% - Micronutrient</option>
+                <option value="Boron 20% - Micronutrient">⚡ Boron 20% - Micronutrient</option>
+                <option value="Gypsum - Soil Conditioner">🧪 Gypsum - Soil Conditioner</option>
+                <option value="Bentonite Clay - Soil Conditioner">🧪 Bentonite Clay - Soil Conditioner</option>
+                <option value="Humic Acid - Soil Conditioner">🧪 Humic Acid - Soil Conditioner</option>
+                <option value="Rock Phosphate - Raw Material">⛰️ Rock Phosphate - Raw Material</option>
+                <option value="Single Super Phosphate (SSP)">💪 Single Super Phosphate (SSP)</option>
+                <option value="Potassium Chloride (MOP)">💪 Potassium Chloride (MOP)</option>
+            </select>
+            <input type="number" class="quantity" placeholder="Qty" value="1" min="1" step="1">
+            <select class="unit">
+                <option value="Kg">Kg</option>
+                <option value="Ton">Ton</option>
+                <option value="Bag">Bag (50kg)</option>
+                <option value="Liter">Liter</option>
+            </select>
+            <input type="number" class="rate" placeholder="Rate" value="0" min="0" step="0.01">
+            <input type="text" class="line-total" placeholder="Total" value="0.00" readonly>
+            <button type="button" class="remove-product" onclick="removeProductItem(this)"><i class="fas fa-trash-alt"></i></button>
+        `;
+        container.appendChild(newItem);
+        attachProductListeners(newItem);
+        updateTotalItems();
+        showToast('Product added successfully', 'success');
+    }
+
+    function removeProductItem(btn) {
+        const item = btn.closest('.product-item');
+        if (document.querySelectorAll('.product-item').length > 1) {
+            item.style.animation = 'fadeOutUp 0.3s ease';
+            setTimeout(() => {
+                item.remove();
+                updateTotalItems();
+                showToast('Product removed', 'success');
+            }, 200);
+        } else {
+            showToast('At least one product is required', 'error');
+        }
+    }
+
+    function calculateGrandTotal() {
+        let total = 0;
+        const items = document.querySelectorAll('.product-item');
+        items.forEach(item => {
+            const qty = parseFloat(item.querySelector('.quantity')?.value) || 0;
+            const rate = parseFloat(item.querySelector('.rate')?.value) || 0;
+            const lineTotal = qty * rate;
+            const lineTotalEl = item.querySelector('.line-total');
+            if (lineTotalEl) {
+                lineTotalEl.value = lineTotal.toFixed(2);
+            }
+            total += lineTotal;
+        });
+        const grandTotalEl = document.getElementById('grandTotal');
+        if (grandTotalEl) grandTotalEl.innerText = total.toFixed(2);
+        const totalItemsEl = document.getElementById('totalItems');
+        if (totalItemsEl) totalItemsEl.innerText = items.length;
+    }
+
+    function attachProductListeners(item) {
+        const qtyInput = item.querySelector('.quantity');
+        const rateInput = item.querySelector('.rate');
+        const updateFunc = () => {
+            calculateGrandTotal();
+            updateOrderInfoPanel();
+        };
+        if (qtyInput) {
+            qtyInput.removeEventListener('input', updateFunc);
+            qtyInput.addEventListener('input', updateFunc);
+            qtyInput.addEventListener('change', updateFunc);
+        }
+        if (rateInput) {
+            rateInput.removeEventListener('input', updateFunc);
+            rateInput.addEventListener('input', updateFunc);
+            rateInput.addEventListener('change', updateFunc);
+        }
+    }
+
+    function updateOrderInfoPanel() {
+        document.getElementById('orderInfoDate').innerText = document.getElementById('orderDate').value || 'N/A';
+        document.getElementById('orderInfoDelivery').innerText = document.getElementById('deliveryDate').value || 'N/A';
+        document.getElementById('orderInfoCustomerType').innerText = document.getElementById('customerType').value || 'N/A';
+    }
+
+    function updateTotalItems() {
+        const items = document.querySelectorAll('.product-item');
+        let validCount = 0;
+        items.forEach(item => {
+            const product = item.querySelector('.product-name').value;
+            const qty = item.querySelector('.quantity').value;
+            if (product && qty && parseInt(qty) > 0) validCount++;
+        });
+        document.getElementById('totalItems').innerText = validCount;
+        calculateGrandTotal();
+        updateOrderInfoPanel();
+    }
+
+    function validateForm() {
+        const customerName = document.getElementById('customerName').value.trim();
+        const mobile = document.getElementById('mobile').value.trim();
+        const address = document.getElementById('address').value.trim();
+        
+        if (!customerName) {
+            showToast("Please enter customer name", 'error');
+            document.getElementById('customerName').focus();
+            return false;
+        }
+        if (!mobile || mobile.length < 10) {
+            showToast("Please enter valid 10-digit mobile number", 'error');
+            document.getElementById('mobile').focus();
+            return false;
+        }
+        if (!address) {
+            showToast("Please enter delivery address", 'error');
+            document.getElementById('address').focus();
+            return false;
+        }
+        const orderDate = document.getElementById('orderDate').value;
+        if (!orderDate) {
+            showToast("Please select order date", 'error');
+            document.getElementById('orderDate').focus();
+            return false;
+        }
+        
+        const products = document.querySelectorAll('.product-item');
+        let hasValidProduct = false;
+        for (let product of products) {
+            const productName = product.querySelector('.product-name').value;
+            const quantity = parseFloat(product.querySelector('.quantity').value) || 0;
+            const rate = parseFloat(product.querySelector('.rate').value) || 0;
+            if (productName && quantity > 0 && rate > 0) {
+                hasValidProduct = true;
+                break;
+            }
+        }
+        if (!hasValidProduct) {
+            showToast("Please add at least one product with valid quantity and rate", 'error');
+            return false;
+        }
+        return true;
+    }
+
+    function getOrderData() {
+        const orderId = 'AGRO-' + Date.now().toString().slice(-8) + Math.floor(Math.random() * 1000);
+        const date = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        
+        const products = [];
+        const productItems = document.querySelectorAll('.product-item');
+        productItems.forEach(item => {
+            const productName = item.querySelector('.product-name').value;
+            const quantity = parseFloat(item.querySelector('.quantity').value) || 0;
+            const unit = item.querySelector('.unit').value;
+            const rate = parseFloat(item.querySelector('.rate').value) || 0;
+            const lineTotal = parseFloat(item.querySelector('.line-total').value) || (quantity * rate);
+            if (productName && quantity > 0) {
+                products.push({
+                    name: productName,
+                    quantity: quantity,
+                    unit: unit,
+                    rate: rate,
+                    total: lineTotal
+                });
+            }
+        });
+        
+        return {
+            orderId: orderId,
+            date: date,
+            orderDate: document.getElementById('orderDate').value,
+            deliveryDate: document.getElementById('deliveryDate').value,
+            customerName: document.getElementById('customerName').value.trim(),
+            mobile: document.getElementById('mobile').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            address: document.getElementById('address').value.trim(),
+            customerType: document.getElementById('customerType').value,
+            gst: document.getElementById('gst').value.trim(),
+            paymentTerms: document.getElementById('paymentTerms').value.trim(),
+            products: products
+        };
+    }
+
+    function escapeHtml(text) {
+        if (!text) return '';
+        return text.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function createPDFHTML(data) {
+        let productsHTML = '';
+        data.products.forEach((product, index) => {
+            productsHTML += `
+                <tr>
+                    <td style="border: 1px solid #E5E9F0; padding: 10px;">${index + 1}</td>
+                    <td style="border: 1px solid #E5E9F0; padding: 10px;">${escapeHtml(product.name)}</td>
+                    <td style="border: 1px solid #E5E9F0; padding: 10px; text-align: center;">${product.quantity}</td>
+                    <td style="border: 1px solid #E5E9F0; padding: 10px; text-align: center;">${product.unit}</td>
+                    <td style="border: 1px solid #E5E9F0; padding: 10px; text-align: center;">${parseFloat(product.rate || 0).toFixed(2)}</td>
+                    <td style="border: 1px solid #E5E9F0; padding: 10px; text-align: center;">${parseFloat(product.total || 0).toFixed(2)}</td>
+                </tr>
+            `;
+        });
+
+        return `
+            <div id="pdfContentToPrint" style="font-family: 'Inter', sans-serif; background: white; padding: 40px; width: 100%; max-width: 800px; margin: 0 auto; box-sizing: border-box;">
+                <div style="text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 3px solid #0A5C2E;">
+                    <h1 style="color: #0A5C2E; margin: 0; font-size: 28px;">🌾 Phoenix Plants Lifesaver Pvt. Ltd. </h1>
+                    <p style="color: #5A6B5A; margin: 5px 0;">Empowering Farmers, Enriching Soil</p>
+                    <div style="background: #E8F3EC; padding: 8px 16px; border-radius: 8px; display: inline-block; margin-top: 10px;">
+                        <strong>📋 Order ID: ${data.orderId}</strong>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 12px;">
+                    <h3 style="color: #0A5C2E; margin-bottom: 8px; border-left: 3px solid #E8A735; padding-left: 12px;">📋 Order Information</h3>
+                    <table style="width:100%; border-collapse:collapse; border:none; font-size:2px; font-weight:600;">
+                        <thead>
+                            <tr style="background: #f0f8f2; color:#0A5C2E;">
+                                <th style="padding:10px; border:none; text-align:center;">PARTY TYPE</th>
+                                <th style="padding:10px; border:none; text-align:center;">ORDER DATE</th>
+                                <th style="padding:10px; border:none; text-align:center;">DELIVERY DATE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background:#FFFFFF; color:#1F2A1E;">
+                                <td style="padding:10px; border:none; text-align:center; height:50px; font-weight:normal;">${data.customerType || 'Dealer'}</td>
+                                <td style="padding:10px; border:none; text-align:center; height:50px; font-weight:normal;">${data.orderDate || 'N/A'}</td>
+                                <td style="padding:10px; border:none; text-align:center; height:50px; font-weight:normal;">${data.deliveryDate || 'N/A'}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div style="margin-bottom: 24px;">
+                    <h3 style="color: #0A5C2E; margin-bottom: 12px; border-left: 3px solid #E8A735; padding-left: 12px;">👤 Customer Details</h3>
+                    <div style="background: #F9FAFB; padding: 16px; border-radius: 12px;">
+                        <p><strong>Name:</strong> ${escapeHtml(data.customerName)}</p>
+                        <p><strong>📱 Mobile:</strong> ${data.mobile}</p>
+                        ${data.email ? `<p><strong>✉️ Email:</strong> ${data.email}</p>` : ''}
+                        <p><strong>📍 Address:</strong> ${escapeHtml(data.address)}</p>
+                        ${data.gst ? `<p><strong>🏢 GST Number:</strong> ${data.gst}</p>` : ''}
+                        <p><strong>💳 Payment Terms:</strong> ${escapeHtml(data.paymentTerms || 'N/A')}</p>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px; padding: 16px; background: #F0FFF4; border: 1px solid #C9EAD9; border-radius: 12px;">
+                    <h3 style="color: #0A5C2E; margin-bottom: 10px;">📜 Terms & Conditions</h3>
+                    <ol style="margin: 0; padding-left: 20px; color: #2e4c33; font-size: 0.92rem;">
+                        <li>Give information about leakage and damaged material within 7 days of receiving material; after that buyer will be responsible for situation of goods.</li>
+                        <li>No sale return is accepted without prior permission of management.</li>
+                        <li>Freight should be paid on delivery of goods.</li>
+                        <li>Prices mentioned on order form are calculated according to cash discount table of price list.</li>
+                        <li>Payment terms are subject to designation of buyer and prices coated by company official.</li>
+                    </ol>
+                    <div style="display: flex; justify-content: space-between; margin-top: 12px; font-size: 0.93rem;">
+                        <span><strong>Owner Sign & Stamp:</strong> _______________________</span>
+                        <span><strong>RDM/ZM Sign:</strong> _______________________</span>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <h3 style="color: #0A5C2E; margin-bottom: 12px; border-left: 3px solid #E8A735; padding-left: 12px;">🛒 Order Items</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
+                        <thead>
+                            <tr style="background: #E8F3EC;">
+                                <th style="border: 1px solid #E5E9F0; padding: 10px; text-align: left;">#</th>
+                                <th style="border: 1px solid #E5E9F0; padding: 10px; text-align: left;">Product</th>
+                                <th style="border: 1px solid #E5E9F0; padding: 10px; text-align: center;">Quantity</th>
+                                <th style="border: 1px solid #E5E9F0; padding: 10px; text-align: center;">Unit</th>
+                                <th style="border: 1px solid #E5E9F0; padding: 10px; text-align: center;">Rate (₹)</th>
+                                <th style="border: 1px solid #E5E9F0; padding: 10px; text-align: center;">Amount (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${productsHTML}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5" style="border: 1px solid #E5E9F0; padding: 10px; text-align: right; font-weight: bold;">Grand Total</td>
+                                <td style="border: 1px solid #E5E9F0; padding: 10px; text-align: center; font-weight: bold;">₹ ${data.products.reduce((sum, p) => sum + parseFloat(p.total || 0), 0).toFixed(2)}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #E5E9F0; text-align: center;">
+                    <p style="color: #5A6B5A; font-size: 12px;"><strong>📌 Note:</strong> Final pricing and availability will be confirmed by our sales team within 24 hours.</p>
+                    <p style="color: #5A6B5A; font-size: 12px; margin-top: 10px;">📞 For urgent inquiries, contact: +91-7983391779 | 💬 WhatsApp: +91-8126354387</p>
+                    <p style="color: #0A5C2E; font-size: 11px; margin-top: 20px;">© 2019 Phoenix Plants Lifesaver Pvt. Ltd. - शुद्धता एवं समृद्धि का प्रतीक ...! | Growing Together 🌱</p>
+                </div>
+            </div>
+        `;
+    }
+
+    function generatePDFClient(orderData) {
+        const htmlContent = createPDFHTML(orderData);
+        console.log('generatePDFClient htmlContent length:', htmlContent.length);
+
+        const tempContainer = document.createElement('div');
+        tempContainer.style.position = 'fixed';
+        tempContainer.style.left = '0';
+        tempContainer.style.top = '0';
+        tempContainer.style.width = '800px';
+        tempContainer.style.zIndex = '9999';
+        tempContainer.style.opacity = '0.01';
+        tempContainer.style.pointerEvents = 'none';
+        tempContainer.style.background = 'white';
+        tempContainer.innerHTML = htmlContent;
+        document.body.appendChild(tempContainer);
+
+        const options = {
+            margin:       10,
+            filename:     `Phoenix_Order_${orderData.orderId}.pdf`,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, logging: true },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        html2pdf().set(options).from(tempContainer).save().then(() => {
+            document.body.removeChild(tempContainer);
+            showToast('✅ PDF generated locally with content', 'success');
+        }).catch(err => {
+            document.body.removeChild(tempContainer);
+            console.error('Local PDF fallback failed:', err);
+            showToast('❌ Local PDF generation failed, check console', 'error');
+        });
+    }
+
+    async function generatePDF() {
+        if (!validateForm()) return;
+        
+        const orderData = getOrderData();
+        currentOrderData = orderData;
+        
+        const generateBtn = document.getElementById('generateBtn');
+        const originalText = generateBtn.innerHTML;
+        generateBtn.innerHTML = '<span class="loading"></span> Generating PDF...';
+        generateBtn.disabled = true;
+        
+        try {
+            console.log('Sending order data to server API:', orderData);
+            // ✅ Send data to server API
+            const response = await fetch('http://localhost:3000/api/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    customerName: orderData.customerName,
+                    mobile: orderData.mobile,
+                    email: orderData.email,
+                    address: orderData.address,
+                    orderDate: orderData.orderDate,
+                    deliveryDate: orderData.deliveryDate,
+                    paymentTerms: orderData.paymentTerms,
+                    customerType: orderData.customerType,
+                    gst: orderData.gst,
+                    products: orderData.products
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API returned HTTP status ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log('Server response:', result);
+
+            if (result.success) {
+                showToast(`✅ PDF Generated Successfully! Order ID: ${result.orderId}`, 'success');
+
+                // Download PDF
+                const downloadLink = document.createElement('a');
+                downloadLink.href = result.pdfUrl;
+                downloadLink.download = `Phoenix_Order_${result.orderId}.pdf`;
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+
+                console.log('Order saved:', result);
+            } else {
+                console.warn('Server API reported failure, using local generation:', result.error);
+                showToast(`⚠️ Server error: ${result.error}. Generating locally.`, 'warning');
+                generatePDFClient(orderData);
+            }
+        } catch (error) {
+            console.warn('PDF API fallback activated:', error);
+            showToast("⚠️ Server unavailable; generating PDF locally", 'warning');
+            generatePDFClient(orderData);
+        } finally {
+            generateBtn.innerHTML = originalText;
+            generateBtn.disabled = false;
+        }
+    }
+    
+    function resetForm() {
+        if (confirm("⚠️ Are you sure you want to reset the entire form?")) {
+            document.getElementById('customerName').value = '';
+            document.getElementById('mobile').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('customerType').value = 'Farmer';
+            document.getElementById('orderDate').value = new Date().toISOString().split('T')[0];
+            document.getElementById('deliveryDate').value = '';
+            document.getElementById('paymentTerms').value = '';
+            document.getElementById('gst').value = '';
+            
+            const container = document.getElementById('productItems');
+            container.innerHTML = '';
+            const firstItem = document.createElement('div');
+            firstItem.className = 'product-item';
+            firstItem.innerHTML = `
+                <select class="product-name">
+                    <option value="">Select Product</option>
+                    <option value="Vermicompost - Organic Fertilizer">🐛 Vermicompost - Organic Fertilizer</option>
+                    <option value="Neem Cake - Organic Fertilizer">🌿 Neem Cake - Organic Fertilizer</option>
+                    <option value="NPK 19:19:19 - Water Soluble">💧 NPK 19:19:19 - Water Soluble</option>
+                    <option value="NPK 13:40:13 - Water Soluble">💧 NPK 13:40:13 - Water Soluble</option>
+                    <option value="NPK 00:52:34 - Water Soluble">💧 NPK 00:52:34 - Water Soluble</option>
+                    <option value="Zinc EDTA 12% - Micronutrient">⚡ Zinc EDTA 12% - Micronutrient</option>
+                    <option value="Iron EDTA 12% - Micronutrient">⚡ Iron EDTA 12% - Micronutrient</option>
+                    <option value="Boron 20% - Micronutrient">⚡ Boron 20% - Micronutrient</option>
+                    <option value="Gypsum - Soil Conditioner">🧪 Gypsum - Soil Conditioner</option>
+                    <option value="Bentonite Clay - Soil Conditioner">🧪 Bentonite Clay - Soil Conditioner</option>
+                    <option value="Humic Acid - Soil Conditioner">🧪 Humic Acid - Soil Conditioner</option>
+                    <option value="Rock Phosphate - Raw Material">⛰️ Rock Phosphate - Raw Material</option>
+                    <option value="Single Super Phosphate (SSP)">💪 Single Super Phosphate (SSP)</option>
+                    <option value="Potassium Chloride (MOP)">💪 Potassium Chloride (MOP)</option>
+                </select>
+                <input type="number" class="quantity" placeholder="Qty" value="1" min="1" step="1">
+                <select class="unit">
+                    <option value="Kg">Kg</option>
+                    <option value="Ton">Ton</option>
+                    <option value="Bag">Bag (50kg)</option>
+                    <option value="Liter">Liter</option>
+                </select>
+                <input type="number" class="rate" placeholder="Rate" value="0" min="0" step="0.01">
+                <input type="text" class="line-total" placeholder="Total" value="0.00" readonly>
+                <button type="button" class="remove-product" onclick="removeProductItem(this)"><i class="fas fa-trash-alt"></i></button>
+            `;
+            container.appendChild(firstItem);
+            attachProductListeners(firstItem);
+            updateTotalItems();
+            showToast("Form has been reset", 'success');
+        }
+    }
+    
+    function toggleMenu() {
+        const nav = document.querySelector('.nav-links');
+        nav.classList.toggle('show');
+    }
+    
+    // Event listeners with delegation
+    document.addEventListener('change', function(e) {
+        if (e.target.classList && (e.target.classList.contains('product-name') || e.target.classList.contains('quantity') || e.target.classList.contains('rate'))) {
+            updateTotalItems();
+        }
+    });
+    
+    document.addEventListener('input', function(e) {
+        if (e.target.classList && (e.target.classList.contains('quantity') || e.target.classList.contains('rate'))) {
+            calculateGrandTotal();
+            updateOrderInfoPanel();
+        }
+    });
+    
+    // Add smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+    
+    // Initialize
+    document.getElementById('orderDate').value = new Date().toISOString().split('T')[0];
+    document.querySelectorAll('.product-item').forEach(item => attachProductListeners(item));
+    updateTotalItems();
+</script>
+</body>
+</html>
